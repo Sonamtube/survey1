@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Shop Interview Notes</title>
+<meta name="theme-color" content="#8a2b2b">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Shop Notes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" href="icon-192.png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Fraunces:opsz,wght@9..144,600&family=Noto+Sans+Devanagari:wght@400;500;700&display=swap">
+<style>
+:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+[hidden]:not([hidden=until-found i]){display:none!important}
+img{max-width:100%}
+:root{--bg:#faf7f2;--panel:#fff;--ink:#2a2420;--ink2:#6b5f56;--line:#e6ddd2;--accent:#8a2b2b;--accent-ink:#fff;--soft:#f3ebe1;--ok:#2f6b3f;--warn:#9a6a12;--star:#c98a14;--focus:#8a2b2b33}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1a1613;--panel:#241e1a;--ink:#f1e9e0;--ink2:#a89b8f;--line:#3a312b;--accent:#e08a7a;--accent-ink:#1a1613;--soft:#2d2520;--ok:#7fc08e;--warn:#e0b25a;--star:#e3ae45;--focus:#e08a7a44;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#1a1613;--panel:#241e1a;--ink:#f1e9e0;--ink2:#a89b8f;--line:#3a312b;--accent:#e08a7a;--accent-ink:#1a1613;--soft:#2d2520;--ok:#7fc08e;--warn:#e0b25a;--star:#e3ae45;--focus:#e08a7a44;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:15px/1.5 Inter,system-ui,sans-serif;margin:0;padding-inline:max(16px,env(safe-area-inset-left,0px)) max(16px,env(safe-area-inset-right,0px));padding-block:0 60px}
+.ne{font-family:"Noto Sans Devanagari",Inter,sans-serif}
+button{font:inherit;cursor:pointer;border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:8px;padding:7px 12px}
+button:hover{border-color:var(--accent)}
+button.pri{background:var(--accent);color:var(--accent-ink);border-color:var(--accent);font-weight:500}
+button.on{background:var(--soft);border-color:var(--accent)}
+button.danger:hover{color:#b3261e;border-color:#b3261e}
+input,textarea,select{font:inherit;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:8px 10px;width:100%}
+input:focus,textarea:focus,select:focus,button:focus-visible{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--focus)}
+textarea{resize:none;overflow:hidden;min-height:68px;line-height:1.5}
+.wrap{display:grid;grid-template-columns:280px minmax(0,1fr);gap:24px;max-width:1200px;margin:0 auto}
+aside{position:sticky;top:0;align-self:start;max-height:100vh;overflow:auto;padding:16px 0}
+aside h2{font:600 20px Fraunces,Georgia,serif;margin:0 0 10px}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+#list{margin-top:10px;display:flex;flex-direction:column;gap:6px}
+.it{display:block;width:100%;text-align:left;padding:9px 11px}
+.it b{display:block;font-weight:600;overflow-wrap:anywhere}
+.it small{color:var(--ink2)}
+.it.cur{border-color:var(--accent);background:var(--soft)}
+main{min-width:0;padding-bottom:40px}
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);padding:12px 0 10px;border-bottom:1px solid var(--line)}
+.bar .row{justify-content:space-between}
+.status{color:var(--ink2);font-size:13px}.status.ok{color:var(--ok)}.status.warn{color:var(--warn)}
+.prog{height:4px;background:var(--line);border-radius:4px;margin-top:10px;overflow:hidden}.prog i{display:block;height:100%;background:var(--accent);width:0}
+.nav{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}.nav button{padding:3px 10px;font-size:13px;border-radius:99px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px;margin-top:16px}
+.meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+label.l{display:block;font-size:12px;color:var(--ink2);margin-bottom:4px;text-transform:uppercase;letter-spacing:.05em}
+h3.sec{font:600 22px Fraunces,Georgia,serif;margin:30px 0 4px;scroll-margin-top:110px}
+.intro{color:var(--ink2);margin:0 0 4px}
+.listen{background:var(--soft);border-radius:8px;padding:8px 12px;font-size:13.5px;margin-top:10px}
+.q{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:20px;align-items:start}
+.qt{display:flex;gap:10px}
+.num{flex:none;min-width:34px;height:26px;border-radius:13px;background:var(--soft);display:grid;place-items:center;font-size:13px;font-weight:600;padding:0 6px}
+.num.star{color:var(--star)}
+.qt p{margin:0}.qt .ne{font-weight:700;color:var(--ink2);font-size:17px;line-height:1.6;margin-top:3px}.qt .ne.main{color:var(--ink);font-size:19px;margin-top:0}
+.done .num{background:var(--accent);color:var(--accent-ink)}
+.chips{display:flex;gap:6px;margin-bottom:8px}.chips button{padding:4px 12px}
+.price{display:flex;align-items:center;gap:8px;margin-bottom:8px;max-width:220px}.price span{color:var(--ink2)}
+table{border-collapse:collapse;width:100%;margin-top:10px}
+th,td{padding:8px;border-bottom:1px solid var(--line);text-align:left;vertical-align:middle}
+th{font-size:12px;color:var(--ink2);text-transform:uppercase;letter-spacing:.05em}
+td select{width:90px}
+.tw{overflow-x:auto}
+.hide{display:none!important}
+.q.skip{display:none}
+.hint{font-size:13px;color:var(--ink2)}
+.ans{display:flex;gap:10px;align-items:flex-start}
+.opts{display:flex;flex-direction:column;gap:6px;flex:none;width:230px}
+.opt .ne{display:block;font-size:14px;line-height:1.4;margin-top:2px;font-weight:500}
+.opt{text-align:left;padding:6px 10px;font-size:13.5px;line-height:1.3}
+.opt.on{background:var(--accent);color:var(--accent-ink);border-color:var(--accent);font-weight:500}
+.ans textarea{flex:1;min-width:0}
+.ne.hint{font-size:16px}
+button:disabled,input:disabled,textarea:disabled,select:disabled{cursor:not-allowed}
+input:disabled,textarea:disabled,select:disabled{background:var(--soft)}
+.opt:disabled:not(.on){opacity:.55}
+h3.sec.ne{font-family:"Noto Sans Devanagari",Fraunces,serif;font-weight:500}
+.intro.ne,.listen.ne{font-size:16px;line-height:1.65}
+body.lang-ne{font-family:"Noto Sans Devanagari",Inter,system-ui,sans-serif;font-size:16px}
+.lang-ne .opt{font-size:15px}.lang-ne .hint{font-size:15px}.lang-ne label.l{text-transform:none;font-size:13px}
+.hint.warn{color:var(--warn)}
+.toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:8px 14px;border-radius:8px;font-size:14px;z-index:9}
+@media(max-width:860px){.wrap{grid-template-columns:minmax(0,1fr);gap:0}aside{position:static;max-height:none}#list{max-height:240px;overflow:auto}.q{grid-template-columns:minmax(0,1fr);gap:10px}.ans{flex-direction:column;align-items:stretch}.opts{width:auto;flex-direction:row;flex-wrap:wrap}}
+</style>
+</head><body>
+<div class="wrap">
+<aside>
+ <h2 id="h-int">Interviews</h2>
+ <div class="row"><button class="pri" id="new">+ New interview</button><button id="csv">Export all (CSV)</button></div>
+ <div class="row" style="margin-top:6px"><button id="bak">Backup</button><button id="rst">Restore</button><input type="file" id="rstf" accept=".json,application/json" hidden></div>
+ <input id="search" type="search" placeholder="Search shop, area, name…" style="margin-top:10px" aria-label="Search interviews">
+ <div class="hint" id="count" style="margin-top:8px"></div>
+ <div class="hint" id="bk" style="margin-top:4px"></div>
+ <div id="list"></div>
+</aside>
+<main>
+ <div class="bar">
+  <div class="row">
+   <div><b id="title">New interview</b> <span class="status" id="status"></span></div>
+   <div class="row">
+    <button id="starOnly" title="Show only the ★ questions (for when time is short)">★ only</button>
+    <button id="md">Download this shop</button>
+    <button class="pri" id="save">Save now</button>
+   </div>
+  </div>
+  <div class="prog"><i id="bar"></i></div>
+  <div class="hint" id="pc" style="margin-top:4px"></div>
+  <div class="nav" id="nav"></div>
+ </div>
+ <div id="form"></div>
+</main>
+</div>
+<div class="toast hide" id="toast"></div>
+<script>
+
+const GUIDE={"sections": [{"t": "About the shop", "intro": "These six answers tell you the size of the shop and whether VAT is likely to matter to them.", "listen": "Shops selling over about Rs 4 lakh a month are near the Rs 50 lakh a year VAT limit. They are a different customer from a one-person corner shop.", "qs": [{"n": 1, "star": false, "en": "What do you sell, and how long have you run this shop?", "ne": "तपाईंको पसलमा के के बेच्नुहुन्छ, र कति वर्षदेखि चलाउनुभएको छ?", "kind": ""}, {"n": 2, "star": false, "en": "Who works here besides you? Who sits at the counter?", "ne": "तपाईंबाहेक पसलमा को को काम गर्छन्? काउन्टरमा को बस्छ?", "kind": ""}, {"n": 3, "star": true, "en": "About how many customers come on a normal day, and on a busy day?", "ne": "सामान्य दिन र व्यस्त दिनमा करिब कति ग्राहक आउँछन्?", "kind": ""}, {"n": 4, "star": false, "en": "Roughly how many different items do you keep?", "ne": "करिब कति थरी सामान राख्नुहुन्छ?", "kind": ""}, {"n": 5, "star": false, "en": "Roughly how much do you sell in a month? (optional: under Rs 1 lakh / 1–3 lakh / 3–5 lakh / over 5 lakh)", "ne": "महिनामा करिब कति बिक्री हुन्छ? (भन्न मन नलागे छोडौं—१ लाख भन्दा कम / १–३ लाख / ३–५ लाख / ५ लाख भन्दा बढी)", "kind": ""}, {"n": 6, "star": false, "en": "Is the shop registered for PAN? Do you give PAN or VAT bills?", "ne": "पसल PAN मा दर्ता छ? PAN वा VAT बिल दिनुहुन्छ?", "kind": ""}]}, {"t": "How the shop runs today", "intro": "Ask them to show you, not just tell you. Watching them work at the counter is worth more than the answers.", "listen": "Every place they use paper, memory or a calculator. Each one is a possible job for the system, and each one shows how much work they already do by hand.", "qs": [{"n": 7, "star": true, "en": "Walk me through your last sale, from the customer picking an item to the money. How do you work out the total? (calculator, notebook, memory, computer)", "ne": "पछिल्लो बिक्री सुरुदेखि अन्त्यसम्म कसरी भयो देखाइदिनुस्। जम्मा कसरी हिसाब गर्नुहुन्छ? (क्यालकुलेटर, कपी, मनमा, कम्प्युटर)", "kind": ""}, {"n": 8, "star": false, "en": "Do you give customers a bill or receipt? How? Do customers ask for one?", "ne": "ग्राहकलाई बिल वा रसिद दिनुहुन्छ? कसरी? ग्राहकले माग्छन्?", "kind": ""}, {"n": 9, "star": true, "en": "How do you know what is in stock? How do you know something is running low?", "ne": "कुन सामान कति बाँकी छ भनेर कसरी थाहा पाउनुहुन्छ? सकिन लाग्यो भनेर कसरी थाहा हुन्छ?", "kind": ""}, {"n": 10, "star": false, "en": "How do you decide what to order and when? Who do you order from, and how? (phone, visit, they visit you)", "ne": "के कति र कहिले मगाउने भन्ने कसरी निर्णय गर्नुहुन्छ? कसबाट र कसरी मगाउनुहुन्छ? (फोन, आफैँ गएर, सप्लायर आउँछ)", "kind": ""}, {"n": 11, "star": false, "en": "How do you handle expiry dates?", "ne": "म्याद सकिने सामानको हेरचाह कसरी गर्नुहुन्छ?", "kind": ""}, {"n": 12, "star": true, "en": "Do you sell on credit (udharo)? How do you write it down? How many customers, and roughly how much is owed to you right now?", "ne": "उधारो बेच्नुहुन्छ? कसरी लेख्नुहुन्छ? कति जना ग्राहकलाई, र अहिले करिब कति बाँकी छ?", "kind": ""}, {"n": 13, "star": false, "en": "How do customers pay: cash, eSewa, Fonepay? Roughly what share each?", "ne": "ग्राहकले कसरी तिर्छन्—नगद, eSewa, Fonepay? करिब कति कति प्रतिशत?", "kind": ""}, {"n": 14, "star": false, "en": "How do you check that an eSewa or Fonepay payment really arrived?", "ne": "eSewa वा Fonepay पैसा साँच्चै आयो भनेर कसरी जाँच्नुहुन्छ?", "kind": ""}, {"n": 15, "star": false, "en": "What do you do at the end of the day: count cash, check sales, write anything down? How long does it take?", "ne": "दिनको अन्त्यमा के गर्नुहुन्छ—नगद गन्ने, बिक्री हेर्ने, लेख्ने? कति समय लाग्छ?", "kind": ""}, {"n": 16, "star": false, "en": "Who does your accounts and tax papers? Do you use an accountant?", "ne": "हिसाबकिताब र कर सम्बन्धी कागज को गर्छ? लेखापाल राख्नुहुन्छ?", "kind": ""}]}, {"t": "Pain points", "intro": "This is the most important section. Ask for the last real event each time, then ask “what did that cost you?” in rupees or hours.", "listen": "A pain they bring up without being asked, and one that cost real money or hours. Write the number down. “It is annoying” is weak; “I lose about Rs 3,000 a month on expired biscuits” is strong.", "qs": [{"n": 17, "star": true, "en": "What is the hardest or most annoying part of running the shop?", "ne": "पसल चलाउँदा सबैभन्दा गाह्रो वा झन्झटिलो कुरा के हो?", "kind": ""}, {"n": 18, "star": true, "en": "Tell me about the last time you lost money or time because of a mistake. What happened? (wrong change, forgotten credit, item ran out, expired stock)", "ne": "पछिल्लोपटक गल्तीले पैसा वा समय गुमाएको घटना भन्नुस्। के भयो? (फिर्ता पैसा गलत, उधारो बिर्सिएको, सामान सकिएको, म्याद सकिएको)", "kind": ""}, {"n": 19, "star": false, "en": "How often does something sell out before you can reorder? What do you lose when that happens?", "ne": "कति पटक सामान सकिएर बिक्री छुट्छ? त्यसबेला के गुमाउनुहुन्छ?", "kind": ""}, {"n": 20, "star": false, "en": "In a month, how much stock do you throw away or sell cheaply because it expired or got damaged?", "ne": "म्याद सकिएर वा बिग्रेर महिनामा कति सामान फाल्नुपर्छ वा सस्तोमा बेच्नुपर्छ?", "kind": ""}, {"n": 21, "star": false, "en": "Do you ever feel stock or cash goes missing and you cannot explain it?", "ne": "कहिले सामान वा पैसा हराएजस्तो लाग्छ तर कारण थाहा हुँदैन?", "kind": ""}, {"n": 22, "star": false, "en": "Of the credit you give, how much is hard to collect?", "ne": "दिएको उधारोमध्ये कति असुल गर्न गाह्रो हुन्छ?", "kind": ""}, {"n": 23, "star": false, "en": "How many hours a week do you spend on counting, writing, ordering and accounts?", "ne": "हप्तामा गन्ती, लेखपढ, अर्डर र हिसाबमा कति घण्टा खर्चिन्छ?", "kind": ""}, {"n": 24, "star": true, "en": "If you could fix one thing in your shop tomorrow, what would it be?", "ne": "भोलि पसलको एउटा कुरा मात्र ठीक गर्न मिल्थ्यो भने के गर्नुहुन्थ्यो?", "kind": ""}]}, {"t": "Tools and technology", "intro": "This tells you what the system must run on, and why earlier software failed for them.", "listen": "Why they stopped using software before. The answer (too slow, too hard, too costly, no help when it broke) is what you must not repeat.", "qs": [{"n": 25, "star": false, "en": "What do you use now: notebook, calculator, phone, computer, any billing app?", "ne": "अहिले के प्रयोग गर्नुहुन्छ—कपी, क्यालकुलेटर, मोबाइल, कम्प्युटर, कुनै बिलिङ एप?", "kind": ""}, {"n": 26, "star": true, "en": "Have you ever tried billing or stock software or an app? What did you like? Why did you stop?", "ne": "कहिल्यै कुनै बिलिङ वा स्टक सफ्टवेयर वा एप चलाउनुभएको छ? के मन पर्‍यो? किन छोड्नुभयो?", "kind": ""}, {"n": 27, "star": false, "en": "Do you have a computer, tablet or touchscreen at the counter? A receipt printer? A barcode scanner?", "ne": "काउन्टरमा कम्प्युटर, ट्याब्लेट वा टचस्क्रिन छ? रसिद प्रिन्टर? बारकोड स्क्यानर?", "kind": ""}, {"n": 28, "star": false, "en": "How reliable are your internet and electricity? What do you do during a power cut?", "ne": "इन्टरनेट र बिजुली कत्तिको भरपर्दो छ? बिजुली गएको बेला के गर्नुहुन्छ?", "kind": ""}, {"n": 29, "star": false, "en": "Who would use a system at your counter? How comfortable are they with phones and computers? Nepali or English?", "ne": "काउन्टरमा को चलाउँछ? फोन वा कम्प्युटरमा कत्तिको सहज छन्? नेपाली कि अंग्रेजी?", "kind": ""}, {"n": 30, "star": false, "en": "Do most of your items have barcodes? Would you rather scan them or tap a picture on the screen?", "ne": "धेरै सामानमा बारकोड छ? स्क्यान गर्न चाहनुहुन्छ कि स्क्रिनमा फोटो छोएर बिक्री गर्न?", "kind": ""}]}, {"t": "Price", "intro": "Ask 31 first. Then read the one-sentence description aloud, exactly as written, and ask the four price questions in order (32–35). Write down a number for each; do not nudge them.", "listen": "Do not tell the shopkeeper any number first. The four answers together show the range of prices shops accept, from “good deal” up to “getting expensive”.", "qs": [{"n": 31, "star": true, "en": "What do you spend each month on things that help run the shop? (internet, accountant, apps, phone)", "ne": "पसल चलाउन सहयोग गर्ने कुरामा (इन्टरनेट, लेखापाल, एप, फोन) महिनामा कति खर्च गर्नुहुन्छ?", "kind": ""}, {"n": 32, "star": true, "en": "At what monthly price would it be so cheap that you would doubt it works?", "ne": "कति महिनावारी शुल्कमा यति सस्तो हुन्छ कि काम गर्छ कि गर्दैन भन्ने शंका लाग्छ?", "kind": "price"}, {"n": 33, "star": true, "en": "At what monthly price is it a good deal?", "ne": "कति महिनावारी शुल्क राम्रो सौदा लाग्छ?", "kind": "price"}, {"n": 34, "star": true, "en": "At what price does it start to feel expensive, but you might still pay?", "ne": "कति शुल्कमा महँगो लाग्न थाल्छ तर तिर्न सक्छु?", "kind": "price"}, {"n": 35, "star": true, "en": "At what price is it too expensive, so you would not buy it?", "ne": "कति शुल्कमा धेरै महँगो भयो, किन्दिनँ?", "kind": "price"}, {"n": 36, "star": false, "en": "Would you rather pay monthly, yearly, or one single payment?", "ne": "महिनावारी, वार्षिक वा एकपटकमा तिर्न मन पर्छ?", "kind": ""}, {"n": 37, "star": false, "en": "If it needs a touchscreen computer, printer or scanner, would you buy it, rent it, or only use what you already have? What is the most you would spend on that equipment?", "ne": "त्यसलाई टचस्क्रिन, प्रिन्टर वा स्क्यानर चाहिन्छ भने किन्नुहुन्छ, भाडामा लिनुहुन्छ कि अहिलेको सामान मात्र प्रयोग गर्नुहुन्छ? त्यसमा अधिकतम कति खर्च गर्न सक्नुहुन्छ?", "kind": ""}, {"n": 38, "star": false, "en": "Who decides whether to buy something like this for the shop?", "ne": "यस्तो चीज किन्ने निर्णय को गर्छ?", "kind": ""}, {"n": 39, "star": false, "en": "How would you want to pay, and how would you want help when something breaks: a visit, a phone call?", "ne": "तिर्ने तरिका के हुनुपर्छ (नगद, eSewa, बैंक)? काम नगरे कसरी सहयोग चाहिन्छ—आउने वा फोन?", "kind": ""}]}, {"t": "What would make it worth it", "intro": "Hand over the feature list (or read it out) and ask them to pick the three that would help most, and any they would never use. Then ask 40 and 41.", "listen": "", "qs": [{"n": 40, "star": false, "en": "What would make you trust a system with your sales and credit records?", "ne": "तपाईंको बिक्री र उधारोको रेकर्ड कुनै प्रणालीमा राख्न के कुराले भरोसा लाग्छ?", "kind": ""}, {"n": 41, "star": false, "en": "What would make you stop using it after a few weeks?", "ne": "केही हप्तापछि किन छोड्न पुग्छु भन्ने लाग्न सक्ने कुरा के हुन सक्छ?", "kind": ""}], "feat": true}, {"t": "Closing", "intro": "End warmly and on time. Thank them, and do not promise anything you cannot deliver.", "listen": "", "qs": [{"n": 42, "star": true, "en": "If I set it up at your counter, would you try it free for one month? What would you need to see in the first week to keep it?", "ne": "मैले तपाईंको काउन्टरमा लगाइदिएमा एक महिना निःशुल्क चलाउनु हुन्छ? पहिलो हप्तामा के देख्न पाएमा राख्न चाहनुहुन्छ?", "kind": "trial"}, {"n": 43, "star": false, "en": "Which one or two other shopkeepers should I talk to?", "ne": "मैले अर्का कुन कुन पसलेसँग कुरा गर्नुपर्ला?", "kind": ""}, {"n": 44, "star": false, "en": "May I call you later with a follow-up? (name and phone, optional)", "ne": "पछि फेरि फोन गर्न मिल्छ? (नाम र फोन, इच्छा भएमात्र)", "kind": ""}, {"n": 45, "star": false, "en": "Is there anything I did not ask that I should have?", "ne": "मैले नसोधेको तर सोध्नुपर्ने कुनै कुरा छ?", "kind": ""}]}], "features": [{"en": "Fast billing with total and change", "ne": "छिटो बिलिङ, जम्मा र फिर्ता सहित"}, {"en": "Alert when an item is running low", "ne": "सामान सकिन लागेपर्दा सूचना"}, {"en": "Credit (udharo) book: who owes what", "ne": "उधारो खाता: कसले कति तिर्नु पर्ने"}, {"en": "Expiry date alerts", "ne": "म्याद सकिने सूचना"}, {"en": "Daily sales and cash report", "ne": "दैनिक बिक्री र नगद रिपोर्ट"}, {"en": "List of what to reorder from each supplier", "ne": "प्रत्येक सप्लायरबाट के मगाउने सूची"}, {"en": "Printed receipts with the shop's PAN", "ne": "पसलको PAN सहित छापिएको रसिद"}, {"en": "Works when the internet is down", "ne": "इन्टरनेट नभएको बेलामा पनि काम गर्छ"}, {"en": "Everything in Nepali", "ne": "सबै कुरा नेपालीमा"}, {"en": "VAT bills, if the shop is registered", "ne": "VAT दर्ता भएको भने VAT बिल"}, {"en": "Owner can see sales on a phone when away", "ne": "पसलमा नभएको बेलामा फोनबाट बिक्री हेर्न मिल्ने"}]};
+const OPTS={1:["Kirana","Vegetable","Dairy","Miscellaneous"],2:["Owner only","Owner and partner","Owner and family","Staff"],3:["Less than 100","100–200","200–500","500+"],4:["Less than 100","100–200","200–500","500+"],5:["Under 1 lakh","1–3 lakh","3–5 lakh","Over 5 lakh"],6:["VAT","PAN","None"],8:["Yes","No","If they ask for one"],9:["I count by hand","I look at my records","I wait until everything is gone","I never know"],10:["I check my stock and call them","Suppliers come and ask me, and I order what I want","I take what suppliers give me","I go to the supplier"],11:["I check them myself","I never know when they expire","Customers tell me after complaining","Suppliers tell me"],12:["Yes","No","Never","Always"],13:["Cash","QR","Credit","All of the above"],14:["I look at the customer's phone","I get a notification on my phone","I don't check","I have a speaker"],16:["Myself","My family","Accountant"],17:["Keeping track of stock","Keeping track of credit","Supply and delivery","Everything"],18:["Sold at wrong price","Forgotten credit","Item ran out","All of the above"],19:["Sometimes","All the time","Never","Once"],20:["Zero","Less than 10","10–50","50–100"],21:["Sometimes","All the time","Never","Once"],22:["None","One","A few","I don't do credit"],23:["5 hours","10 hours","15 hours","20 hours"],24:["Order/Delivery","Stock","Credit","All of the above"],25:["Calculator","Notebook","Phone","Computer"],26:["No","Yes","Once","What is that?"],27:["No","Yes"],28:["Very reliable","Very unreliable"],29:["Not comfortable","Very comfortable","I know a little bit","I can learn"],30:["Half of them","None of them","All of them","I don't know"],31:["Less than Rs 1,000","Rs 1,000–2,000","Rs 2,000–5,000","Nothing"],36:["Monthly","Yearly","Installment","I don't know"],37:["Buy it","Rent it","Won't buy anything","I already have those"],38:["Myself","My partner","My family","Everyone"],39:["Visit","Phone"]};
+GUIDE.sections.forEach(s=>{s.qs=s.qs.filter(q=>q.n!==7)});
+{const qs=GUIDE.sections[4].qs;const i=qs.findIndex(q=>q.n===31);qs.splice(i+1,0,{n:46,star:false,en:"If I told you there was a system that could act like the brain of your store and solve all of your problems like stock numbers, expiry dates, credit ledgers, supply and delivery, would you keep one in your store?",ne:"यदि म तपाईंलाई यस्तो प्रणाली छ भनेर भनूँ जसले तपाईंको पसलको दिमागजस्तै काम गर्छ र स्टकको संख्या, म्याद सकिने मिति, उधारो खाता, आपूर्ति र ढुवानी जस्ता तपाईंका सबै समस्या समाधान गर्छ भने, के तपाईं आफ्नो पसलमा एउटा राख्नुहुन्छ?",kind:""})}
+const SHORT={39:["How would you want help if something breaks?","केही बिग्रेमा तपाईंलाई कसरी सहयोग चाहिन्छ?"],1:["What do you sell?","तपाईंको पसलमा के के बेच्नुहुन्छ?"],12:["Do you sell on credit (udharo)?","उधारो बेच्नुहुन्छ?"],13:["How do customers pay: cash, eSewa, Fonepay?","ग्राहकले कसरी तिर्छन्—नगद, eSewa, Fonepay?"],19:["How often does something sell out before you can reorder?","कति पटक सामान सकिएर बिक्री छुट्छ?"],26:["Have you ever tried billing or stock software or an app?","कहिल्यै कुनै बिलिङ वा स्टक सफ्टवेयर वा एप चलाउनुभएको छ?"],28:["How reliable are your internet and electricity?","इन्टरनेट र बिजुली कत्तिको भरपर्दो छ?"],29:["Who would use a system at your counter? How comfortable are they with phones and computers?","काउन्टरमा को चलाउँछ? फोन वा कम्प्युटरमा कत्तिको सहज छन्?"]};
+GUIDE.sections.forEach(s=>s.qs.forEach(q=>{if(SHORT[q.n]){q.en=SHORT[q.n][0];q.ne=SHORT[q.n][1]}}));
+GUIDE.sections[4].intro=GUIDE.sections[4].intro.replace('Ask 31 first.','Ask 30 and 31 first.');
+Object.assign(OPTS,{15:["Count all the cash","Check all my credits","Check for any item damage","All of the above"],32:["Rs 100","Rs 100–500","Rs 500–1,000","I don't know"],33:["Rs 500–1,000","Rs 1,000–2,000","Rs 2,000–4,000","I'm not sure"],34:["More than Rs 1,000","More than Rs 2,000","More than Rs 3,000","I'm not sure"],46:["Yes","No","Maybe","I'm not sure"]});
+const QN={};{let k=0;GUIDE.sections.forEach(s=>s.qs.forEach(q=>{QN[q.n]=++k}))}
+const TOTAL=Object.keys(QN).length;
+const NE_SEC=[
+{t:'पसलको बारेमा',intro:'यी छ वटा उत्तरले पसलको आकार र उनीहरूलाई VAT को असर पर्न सक्छ कि सक्दैन भन्ने देखाउँछ।',listen:'महिनामा करिब रु ४ लाखभन्दा बढी बिक्री गर्ने पसल वार्षिक रु ५० लाखको VAT सीमाको नजिक हुन्छन्। यी एक जनाले चलाउने सानो पसलभन्दा फरक ग्राहक हुन्।'},
+{t:'पसल अहिले कसरी चल्छ',intro:'भनेर मात्र होइन, देखाउन लगाउनुहोस्। काउन्टरमा उनीहरूले काम गरेको हेर्नु जवाफभन्दा बढी मूल्यवान हुन्छ।',listen:'कागज, मन वा क्यालकुलेटर प्रयोग गर्ने हरेक ठाउँ। प्रत्येक ठाउँ प्रणालीको सम्भावित काम हो, र उनीहरूले हातले कति काम गर्छन् भन्ने देखाउँछ।'},
+{t:'समस्याहरू',intro:'यो सबैभन्दा महत्त्वपूर्ण भाग हो। हरेकपटक पछिल्लो वास्तविक घटना सोध्नुहोस्, त्यसपछि “त्यसले कति खर्च गरायो?” रुपैयाँ वा घण्टामा सोध्नुहोस्।',listen:'नसोधिकनै उनीहरूले उठाएको समस्या, जसले साँच्चै पैसा वा घण्टा खर्च गरायो। संख्या लेख्नुहोस्। “झन्झटिलो छ” कमजोर कुरा हो; “म्याद सकिएको बिस्कुटमा महिनामा करिब रु ३,००० गुमाउँछु” बलियो कुरा हो।'},
+{t:'औजार र प्रविधि',intro:'यसले प्रणाली कुन चीजमा चल्नुपर्छ र पहिलेका सफ्टवेयर किन असफल भए भन्ने देखाउँछ।',listen:'पहिले सफ्टवेयर किन छोडे। जवाफ (धेरै सुस्त, धेरै गाह्रो, धेरै महँगो, बिग्रँदा सहयोग नपाइने) नै तपाईंले नदोहोर्‍याउनुपर्ने कुरा हो।'},
+{t:'मूल्य',intro:'पहिले ३० र ३१ सोध्नुहोस्। त्यसपछि एक वाक्यको विवरण जस्ताको तस्तै ठूलो स्वरमा पढ्नुहोस् र चार मूल्य प्रश्न क्रमशः (३२–३५) सोध्नुहोस्। प्रत्येकको एउटा संख्या लेख्नुहोस्; उनीहरूलाई नधकेल्नुहोस्।',listen:'पसलेलाई पहिले कुनै संख्या नभन्नुहोस्। चारवटा जवाफले “राम्रो सौदा” देखि “महँगो हुँदै” सम्मको पसलहरूले स्वीकार्ने मूल्यको दायरा देखाउँछ।'},
+{t:'के कुराले यो उपयोगी बनाउँछ',intro:'सुविधाको सूची दिनुहोस् (वा पढेर सुनाउनुहोस्) र सबैभन्दा काम लाग्ने तीन छान्न लगाउनुहोस्, र एक पटक पनि प्रयोग नगर्ने कुनै भए सोध्नुहोस्। त्यसपछि ४० र ४१ सोध्नुहोस्।',listen:''},
+{t:'समापन',intro:'न्यानो ढंगले र समयमै अन्त्य गर्नुहोस्। धन्यवाद दिनुहोस्, र पूरा गर्न नसक्ने कुनै वाचा नगर्नुहोस्।',listen:''}];
+const NE_OPT={'Kirana':'किराना','Vegetable':'तरकारी','Dairy':'डेरी','Miscellaneous':'विविध','Owner only':'मालिक मात्र','Owner and partner':'मालिक र साझेदार','Owner and family':'मालिक र परिवार','Staff':'कामदार','Less than 100':'१०० भन्दा कम','100–200':'१००–२००','200–500':'२००–५००','500+':'५००+','Under 1 lakh':'१ लाख भन्दा कम','1–3 lakh':'१–३ लाख','3–5 lakh':'३–५ लाख','Over 5 lakh':'५ लाख भन्दा बढी','VAT':'VAT','PAN':'PAN','None':'कुनै छैन','Yes':'हो','No':'होइन','If they ask for one':'ग्राहकले मागे दिन्छु','I count by hand':'हातले गन्छु','I look at my records':'आफ्नो रेकर्ड हेर्छु','I wait until everything is gone':'सबै सकिएपछि मात्र थाहा पाउँछु','I never know':'मलाई एक पटक पनि थाहा हुँदैन','I check my stock and call them':'स्टक हेरेर उनीहरूलाई फोन गर्छु','Suppliers come and ask me, and I order what I want':'सप्लायर आएर सोध्छन्, र म चाहिएको अर्डर गर्छु','I take what suppliers give me':'सप्लायरले दिएको सामान लिन्छु','I go to the supplier':'म आफैँ सप्लायरकहाँ जान्छु','I check them myself':'आफैँ जाँच्छु','I never know when they expire':'कहिले म्याद सकिन्छ एक पटक पनि थाहा हुँदैन','Customers tell me after complaining':'ग्राहकले गुनासो गरेपछि थाहा हुन्छ','Suppliers tell me':'सप्लायरले भन्छन्','Never':'एक पटक पनि होइन','Always':'सधैँ','Cash':'नगद','QR':'QR','Credit':'उधारो','All of the above':'माथिका सबै',"I look at the customer's phone":'ग्राहकको फोन हेर्छु','I get a notification on my phone':'मेरो फोनमा सूचना आउँछ',"I don't check":'जाँच्दिनँ','I have a speaker':'मसँग स्पिकर छ','Myself':'म आफैँ','My family':'मेरो परिवार','Accountant':'लेखापाल','Keeping track of stock':'स्टकको हिसाब राख्न','Keeping track of credit':'उधारोको हिसाब राख्न','Supply and delivery':'आपूर्ति र ढुवानी','Everything':'सबै कुरा','Sold at wrong price':'गलत मूल्यमा बिक्री','Forgotten credit':'उधारो बिर्सिएको','Item ran out':'सामान सकियो','Sometimes':'कहिलेकाहीँ','All the time':'सधैँ','Once':'एकपटक','Zero':'शून्य','Less than 10':'१० भन्दा कम','10–50':'१०–५०','50–100':'५०–१००','One':'एक जना','A few':'केही जना',"I don't do credit":'म उधारो दिँदिनँ','5 hours':'५ घण्टा','10 hours':'१० घण्टा','15 hours':'१५ घण्टा','20 hours':'२० घण्टा','Order/Delivery':'अर्डर / ढुवानी','Stock':'स्टक','Calculator':'क्यालकुलेटर','Notebook':'कपी','Phone':'फोन','Computer':'कम्प्युटर','What is that?':'त्यो के हो?','Very reliable':'धेरै भरपर्दो','Very unreliable':'भरपर्दो छैन','Not comfortable':'सहज छैन','Very comfortable':'धेरै सहज','I know a little bit':'अलि अलि जान्दछु','I can learn':'सिक्न सक्छु','Half of them':'आधामा','None of them':'कुनैमा छैन','All of them':'सबैमा',"I don't know":'थाहा छैन','Less than Rs 1,000':'रु १,००० भन्दा कम','Rs 1,000–2,000':'रु १,०००–२,०००','Rs 2,000–5,000':'रु २,०००–५,०००','Nothing':'केही पनि होइन','Monthly':'महिनावारी','Yearly':'वार्षिक','Installment':'किस्तामा','Buy it':'किन्छु','Rent it':'भाडामा लिन्छु',"Won't buy anything":'केही किन्दिनँ','I already have those':'ती मसँग पहिले नै छन्','My partner':'मेरो साझेदार','Everyone':'सबै','Visit':'आउने'};
+Object.assign(NE_OPT,{'Count all the cash':'सबै नगद गन्छु','Check all my credits':'सबै उधारो जाँच्छु','Check for any item damage':'कुनै सामान बिग्रिएको छ कि जाँच्छु','Rs 100':'रु १००','Rs 100–500':'रु १००–५००','Rs 500–1,000':'रु ५००–१,०००','Rs 2,000–4,000':'रु २,०००–४,०००','More than Rs 1,000':'रु १,००० भन्दा बढी','More than Rs 2,000':'रु २,००० भन्दा बढी','More than Rs 3,000':'रु ३,००० भन्दा बढी',"I'm not sure":'पक्का छैन','Maybe':'सायद'});
+const U={en:{interviews:'Interviews',newInt:'+ New interview',csv:'Export all (CSV)',search:'Search shop, area, name…',starOnly:'★ only',md:'Download this shop',save:'Save now',newTitle:'New interview',answered:n=>n+' of '+TOTAL+' questions answered',saved:' saved',match:' match',local:' · stored on this iPad',noname:'(no name)',fShop:'Shop name *',phShop:'e.g. Himal Kirana Pasal',fArea:'Area / town',phArea:'e.g. Baneshwor',fDate:'Date',fPerson:'Shopkeeper name',fPhone:'Phone (optional)',fWho:'Who took the notes',notes:'Notes…',trialLbl:'Free trial?',rsMonth:'Rs / month',featHint:'Rank the three features that would help most (1, 2, 3). Tick any they would never use.',thFeature:'Feature',thTop:'Top 3',thNever:'Never use',general:'General notes',genHint:'Anything else: what you saw at the counter, tone, surprises, who to follow up with.',listen:'Listen for: ',typing:'Typing…',needName:'Type the shop name at the top to start saving',savedAt:'Saved ✓ ',savedToast:'Saved',needNameToast:'Type the shop name first',nothingToast:'Nothing saved yet',roNote:'This interview is saved and read-only. Tap “New interview” to start another.',roStatus:'Read only'},
+ne:{interviews:'अन्तर्वार्ताहरू',newInt:'+ नयाँ अन्तर्वार्ता',csv:'सबै निर्यात (CSV)',search:'पसल, ठाउँ, नाम खोज्नुहोस्…',starOnly:'केवल ★',md:'यो पसल डाउनलोड',save:'अहिले सेभ गर्नुहोस्',newTitle:'नयाँ अन्तर्वार्ता',answered:n=>TOTAL+' मध्ये '+n+' प्रश्नको उत्तर भयो',saved:' सेभ गरिएको',match:' मिल्यो',local:' · यही ब्राउजरमा मात्र राखिएको',noname:'(नाम छैन)',fShop:'पसलको नाम *',phShop:'जस्तै: हिमाल किराना पसल',fArea:'ठाउँ / सहर',phArea:'जस्तै: बानेश्वर',fDate:'मिति',fPerson:'पसलेको नाम',fPhone:'फोन (इच्छा भए)',fWho:'नोट लिने व्यक्ति',notes:'टिप्पणी…',trialLbl:'निःशुल्क प्रयोग?',rsMonth:'रु / महिना',featHint:'सबैभन्दा काम लाग्ने तीन सुविधालाई क्रम दिनुहोस् (१, २, ३)। एक पटक पनि प्रयोग नगर्ने सुविधामा चिन्ह लगाउनुहोस्।',thFeature:'सुविधा',thTop:'शीर्ष ३',thNever:'एक पटक पनि प्रयोग नगर्ने',general:'सामान्य टिप्पणी',genHint:'अरू कुरा: काउन्टरमा देखेको, कुराकानीको स्वर, अनौठा कुरा, कसलाई फेरि भेट्ने।',listen:'के सुन्ने: ',typing:'लेख्दै…',needName:'सेभ गर्न माथि पसलको नाम लेख्नुहोस्',savedAt:'सेभ भयो ✓ ',savedToast:'सेभ भयो',needNameToast:'पहिले पसलको नाम लेख्नुहोस्',nothingToast:'अहिलेसम्म केही सेभ गरिएको छैन',roNote:'यो अन्तर्वार्ता सेभ भइसकेको छ र सम्पादन गर्न मिल्दैन। अर्को सुरु गर्न “नयाँ अन्तर्वार्ता” थिच्नुहोस्।',roStatus:'हेर्न मात्र मिल्ने'}};
+U.en.featHint='Tick the features the shopkeeper says they need.';U.ne.featHint='उनीहरूलाई चाहिने सुविधाहरूमा चिन्ह लगाउनुहोस्।';U.en.thNever='Features I need';U.ne.thNever='मलाई चाहिने सुविधा';
+GUIDE.sections[5].intro='Hand over the feature list (or read it out) and ask them which features they need. Then ask 40 and 41.';NE_SEC[5].intro='सुविधाको सूची दिनुहोस् (वा पढेर सुनाउनुहोस्) र उनीहरूलाई चाहिने सुविधाहरू छान्न लगाउनुहोस्। त्यसपछि ४० र ४१ सोध्नुहोस्।';
+const u=(k,...a)=>{const v=U[lang][k];return typeof v==='function'?v(...a):v};
+const optT=(v,q)=>{let ne=NE_OPT[v];if(q&&/(^|\s)छ\?/.test(q.ne)){if(v==='Yes')ne='छ';else if(v==='No')ne='छैन'}return [v,ne?h('span',{class:'ne'},ne):null]};
+const chipT=v=>v+' · '+({Yes:'हुन्छ',Maybe:'सायद',No:'हुँदैन'}[v]||'');
+const secTxt=(i,k)=>lang==='ne'?NE_SEC[i][k]:GUIDE.sections[i][k];
+const DAY=()=>{const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')};
+const $=s=>document.querySelector(s);
+function h(tag,attrs,...kids){const e=document.createElement(tag);for(const k in(attrs||{})){const v=attrs[k];if(k==='class')e.className=v;else if(k.startsWith('on'))e.addEventListener(k.slice(2),v);else if(v===true)e.setAttribute(k,'');else if(v!==false&&v!=null)e.setAttribute(k,v)}for(const c of kids.flat())if(c!=null)e.append(c.nodeType?c:document.createTextNode(c));return e}
+const lsGet=k=>{try{return localStorage.getItem(k)}catch(e){return null}};
+const lsSet=(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}};
+const blank=()=>({id:'i'+Date.now().toString(36)+Math.random().toString(36).slice(2,6),shop:'',area:'',date:DAY(),person:'',phone:'',who:'',trial:'',general:'',a:{},o:{},f:{},created:Date.now(),updated:0});
+let readOnly=false;let lang='en';let cur=blank(),items=[],store=null,timer=null,saving=Promise.resolve(),starOnly=false,dirty=false;
+const answered=c=>{let n=0;for(const i in QN){if(String((c.o||{})[i]||'').trim()||String((c.a||{})[i]||'').trim()||String((c.a||{})['p'+i]||'').trim())n++}return n};
+
+/* ---------- storage: shared database, or this browser if unavailable ---------- */
+async function initStore(){
+ let db=null;
+ if(db){
+  const col=db.collection('interviews');
+  store={kind:'db',put:(c)=>col.doc(c.id).set(c),del:(id)=>col.doc(id).delete(),
+   watch:(cb)=>col.limit(1000).onSnapshot(s=>cb(s.docs.map(d=>d.data())),()=>{})};
+ }else{
+  let m={};try{m=JSON.parse(lsGet('kn-all')||'{}')}catch(e){}
+  let cb=()=>{};
+  store={kind:'local',put:async c=>{m[c.id]=c;lsSet('kn-all',JSON.stringify(m));cb(Object.values(m))},del:async id=>{delete m[id];lsSet('kn-all',JSON.stringify(m));cb(Object.values(m))},
+   watch:f=>{cb=f;f(Object.values(m))}};
+ }
+ store.watch(arr=>{items=arr.filter(Boolean);renderList()});
+}
+
+/* ---------- saving ---------- */
+function setStatus(t,c){const s=$('#status');s.textContent=t;s.className='status '+(c||'')}
+function touch(){dirty=true;lsSet('kn-draft',JSON.stringify(cur));setStatus(u('typing'));clearTimeout(timer);timer=setTimeout(()=>save(),900);updateTop()}
+function save(){
+ clearTimeout(timer);
+ if(readOnly)return saving;
+ if(!dirty&&cur.updated)return saving;
+ if(!cur.shop.trim()){setStatus(u('needName'),'warn');return saving}
+ if(!store){setStatus('Starting…','warn');return saving}
+ cur.updated=Date.now();dirty=false;lsSet('kn-draft',JSON.stringify(cur));
+ const snap=JSON.parse(JSON.stringify(cur));
+ saving=saving.then(()=>store.put(snap)).then(()=>{if(!dirty)setStatus(u('savedAt')+new Date().toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'}),'ok')}).catch(e=>{dirty=true;setStatus('Could not save — will retry. Your text is kept on this iPad.','warn');timer=setTimeout(save,5000)});
+ return saving;
+}
+function toast(t){const e=$('#toast');e.textContent=t;e.classList.remove('hide');clearTimeout(toast.t);toast.t=setTimeout(()=>e.classList.add('hide'),2500)}
+
+/* ---------- form ---------- */
+function grow(t){t.style.height='auto';t.style.height=Math.max(68,t.scrollHeight+2)+'px'}
+function field(label,key,type,ph){const i=h('input',{type:type||'text',placeholder:ph||'',id:'f-'+key});i.value=cur[key]||'';i.addEventListener('input',()=>{cur[key]=i.value;touch()});return h('div',null,h('label',{class:'l',for:'f-'+key},label),i)}
+function renderForm(){
+ const F=$('#form');F.replaceChildren();if(readOnly)F.append(h('div',{class:'listen',style:'margin-top:16px'},u('roNote')));
+ const shop=field(u('fShop'),'shop',null,u('phShop'));
+ F.append(h('div',{class:'card'},h('div',{class:'meta'},shop,field(u('fArea'),'area',null,u('phArea')),field(u('fDate'),'date','date'),field(u('fPerson'),'person'),field(u('fPhone'),'phone','tel'),field(u('fWho'),'who'))));
+ GUIDE.sections.forEach((s,si)=>{
+  F.append(h('h3',{class:'sec'+(lang==='ne'?' ne':''),id:'sec'+si},secTxt(si,'t'),h('span',{class:'ne',style:'font-weight:500'},' · '+NE_SEC[si].t)),h('p',{class:'intro'+(lang==='ne'?' ne':'')},secTxt(si,'intro')),h('p',{class:'intro ne'},NE_SEC[si].intro));
+  const card=h('div',{class:'card'});
+  if(s.feat){
+   card.append(h('p',{class:'hint',style:'margin:0 0 6px'},u('featHint'),h('span',{class:'ne',style:'display:block;margin-top:4px'},U.ne.featHint)));
+   const tb=h('tbody');
+   GUIDE.features.forEach((f,fi)=>{
+    const cur_=cur.f[fi]||{};
+    
+    const cb=h('input',{type:'checkbox',style:'width:auto','aria-label':'I need '+f.en});cb.checked=!!cur_.need;
+    const up=()=>{cur.f[fi]={need:cb.checked};if(!cb.checked)delete cur.f[fi];touch()};
+    cb.addEventListener('change',up);
+    tb.append(h('tr',null,h('td',null,...(lang==='ne'?[h('span',{class:'ne main'},f.ne)]:[f.en,h('div',{class:'ne hint'},f.ne)])),h('td',null,cb)));
+   });
+   card.append(h('div',{class:'tw'},h('table',null,h('thead',null,h('tr',null,h('th',null,u('thFeature')+' / '+U.ne.thFeature),h('th',null,u('thNever')+' / '+U.ne.thNever))),tb)));
+  }
+  s.qs.forEach((q,qi)=>{
+   const ta=h('textarea',{'aria-label':'Answer to question '+q.n,placeholder:u('notes')});ta.value=cur.a[q.n]||'';
+   const row=h('div',{class:'q'+(qi||s.feat?'':'')+(q.star?' st':''),'data-n':q.n,style:(qi||s.feat)?'margin-top:18px;padding-top:18px;border-top:1px solid var(--line)':''});
+   const mark=()=>{row.classList.toggle('done',!!(String(cur.a[q.n]||'').trim()||(cur.o&&cur.o[q.n])))};
+   ta.addEventListener('input',()=>{cur.a[q.n]=ta.value;grow(ta);mark();touch()});
+   const right=h('div');
+   if(q.kind==='trial'){
+    const chips=h('div',{class:'chips'});
+    ['Yes','Maybe','No'].forEach(v=>{const b=h('button',{type:'button','data-v':v,class:cur.trial===v?'on':''},chipT(v));b.addEventListener('click',()=>{cur.trial=cur.trial===v?'':v;[...chips.children].forEach(c=>c.classList.toggle('on',c.dataset.v===cur.trial));touch()});chips.append(b)});
+    right.append(h('label',{class:'l'},u('trialLbl')),chips);
+   }
+   if(q.kind==='price'){
+    const pi=h('input',{inputmode:'numeric',placeholder:'0','aria-label':'Price for question '+q.n});pi.value=(cur.a['p'+q.n]||'');
+    pi.addEventListener('input',()=>{cur.a['p'+q.n]=pi.value;touch()});
+    right.append(h('div',{class:'price'},h('span',null,u('rsMonth')),pi));
+   }
+   const opts=OPTS[q.n];
+   if(opts){
+    cur.o=cur.o||{};
+    const og=h('div',{class:'opts',role:'group','aria-label':'Quick answers for question '+q.n});
+    opts.forEach(t=>{const b=h('button',{type:'button','data-v':t,class:'opt'+(cur.o[q.n]===t?' on':''),'aria-pressed':cur.o[q.n]===t?'true':'false'},optT(t,q));
+     b.addEventListener('click',()=>{cur.o[q.n]=cur.o[q.n]===t?'':t;if(!cur.o[q.n])delete cur.o[q.n];[...og.children].forEach(c=>{const on=c.dataset.v===cur.o[q.n];c.classList.toggle('on',on);c.setAttribute('aria-pressed',on?'true':'false')});mark();touch()});
+     og.append(b)});
+    right.append(h('div',{class:'ans'},og,ta));
+   }else right.append(ta);
+   row.append(h('div',{class:'qt'},h('span',{class:'num'+(q.star?' star':'')},q.star?QN[q.n]+' ★':String(QN[q.n])),h('div',null,...(lang==='ne'?[h('p',{class:'ne main'},q.ne)]:[h('p',null,q.en),h('p',{class:'ne'},q.ne)]))),right);
+   card.append(row);mark();setTimeout(()=>grow(ta),0);
+  });
+  if(s.listen)card.append(h('div',{class:'listen'+(lang==='ne'?' ne':'')},h('b',null,u('listen')),secTxt(si,'listen'),h('div',{class:'ne',style:'margin-top:6px'},NE_SEC[si].listen)));
+  F.append(card);
+ });
+ F.append(h('h3',{class:'sec'+(lang==='ne'?' ne':''),id:'secG'},u('general'),h('span',{class:'ne',style:'font-weight:500'},' · '+U.ne.general)),h('div',{class:'card'},h('p',{class:'hint',style:'margin:0 0 8px'},u('genHint')),(()=>{const t=h('textarea',{'aria-label':'General notes',style:'min-height:120px'});t.value=cur.general||'';t.addEventListener('input',()=>{cur.general=t.value;grow(t);touch()});setTimeout(()=>grow(t),0);return t})()));
+ const nav=$('#nav');nav.replaceChildren(...GUIDE.sections.map((s,i)=>h('button',{type:'button',onclick:()=>document.getElementById('sec'+i).scrollIntoView({behavior:'smooth'})},secTxt(i,'t'))),h('button',{type:'button',onclick:()=>document.getElementById('secG').scrollIntoView({behavior:'smooth'})},u('general')));
+ if(readOnly)F.querySelectorAll('input,textarea,select,.opt,.chips button').forEach(e=>{e.disabled=true});
+ applyStar();updateTop();
+}
+function applyStar(){document.querySelectorAll('.q').forEach(r=>r.classList.toggle('skip',starOnly&&!r.classList.contains('st')));$('#starOnly').classList.toggle('on',starOnly)}
+function updateTop(){
+ $('#title').textContent=cur.shop.trim()||u('newTitle');
+ const n=answered(cur);$('#bar').style.width=(n/TOTAL*100)+'%';$('#pc').textContent=u('answered',n);
+}
+
+/* ---------- list ---------- */
+function renderList(){
+ const q=$('#search').value.trim().toLowerCase();
+ const arr=items.filter(c=>!q||[c.shop,c.area,c.person,c.phone].join(' ').toLowerCase().includes(q)).sort((a,b)=>(b.updated||0)-(a.updated||0));
+ $('#count').textContent=items.length+u('saved')+(q?' · '+arr.length+u('match'):'')+(store&&store.kind==='local'?u('local'):'');
+ updateBk();$('#list').replaceChildren(...arr.map(c=>{
+  const b=h('button',{type:'button',class:'it'+(c.id===cur.id?' cur':'')},h('b',null,c.shop||u('noname')),h('small',null,[c.area,c.date,answered(c)+'/'+TOTAL].filter(Boolean).join(' · ')));
+  b.addEventListener('click',()=>openItem(c));return b}));
+}
+async function openItem(c){if(c.id===cur.id)return;await flush();cur=JSON.parse(JSON.stringify(c));cur.a=cur.a||{};cur.o=cur.o||{};cur.f=cur.f||{};dirty=false;readOnly=true;lsSet('kn-draft','');renderForm();setStatus(u('roStatus'),'ok');renderList();scrollTo({top:0})}
+async function flush(){if(dirty&&cur.shop.trim())await save()}
+async function newItem(){await flush();cur=blank();readOnly=false;dirty=false;lsSet('kn-draft',JSON.stringify(cur));renderForm();setStatus('');renderList();scrollTo({top:0});setTimeout(()=>$('#f-shop').focus(),50)}
+
+/* ---------- export ---------- */
+function clean(s){return String(s||'').replace(/[\\/:*?"<>|\r\n]+/g,' ').replace(/\s+/g,' ').trim()}
+function toMd(c){
+ const L=['# '+(c.shop||'Shop')+(c.area?' — '+c.area:''),'','- Date: '+c.date,'- Shopkeeper: '+(c.person||'—'),'- Phone: '+(c.phone||'—'),'- Notes taken by: '+(c.who||'—'),'- Free trial (Q42): '+(c.trial||'—'),''];
+ GUIDE.sections.forEach(s=>{
+  L.push('## '+s.t,'');
+  if(s.feat){L.push('Features I need:');const nd=GUIDE.features.filter((f,i)=>((c.f||{})[i]||{}).need);nd.forEach(f=>L.push('- '+f.en));if(!nd.length)L.push('- (none marked)');L.push('')}
+  s.qs.forEach(q=>{L.push('**'+QN[q.n]+(q.star?' ★':'')+'. '+q.en+'**');const p=(c.a||{})['p'+q.n];if(p)L.push('Rs '+p+' per month');const ch=(c.o||{})[q.n];if(ch)L.push('Answer: '+ch);L.push(String((c.a||{})[q.n]||'').trim()||(ch?'':'—'),'')});
+ });
+ L.push('## General notes','',(c.general||'').trim()||'—','');return L.join('\n');
+}
+function csvCell(v){v=String(v==null?'':v);return /[",\n\r]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v}
+function toCsv(arr){
+ const qs=GUIDE.sections.flatMap(s=>s.qs);
+ const head=['Shop','Area','Date','Shopkeeper','Phone','Notes by','Free trial (Q42)',...qs.flatMap(q=>[...(q.kind==='price'?['Q'+QN[q.n]+' Rs']:[]),...(OPTS[q.n]?['Q'+QN[q.n]+' '+q.en.slice(0,40)+' (choice)','Q'+QN[q.n]+' notes']:['Q'+QN[q.n]+' '+q.en.slice(0,40)])]),'Features I need','General notes'];
+ const rows=arr.map(c=>{
+  const top=Object.entries(c.f||{}).filter(()=>false).join('; ');
+  const nev=Object.entries(c.f||{}).filter(([,x])=>x.need).map(([i])=>GUIDE.features[i].en).join('; ');
+  return [c.shop,c.area,c.date,c.person,c.phone,c.who,c.trial,...qs.flatMap(q=>[...(q.kind==='price'?[(c.a||{})['p'+q.n]||'']:[]),...(OPTS[q.n]?[(c.o||{})[q.n]||'']:[]),(c.a||{})[q.n]||'']),nev,c.general];
+ });
+ return '﻿'+[head,...rows].map(r=>r.map(csvCell).join(',')).join('\r\n');
+}
+async function download(filename,data){
+ const type=/\.csv$/.test(filename)?'text/csv;charset=utf-8':/\.json$/.test(filename)?'application/json':'text/markdown;charset=utf-8';
+ const blob=new Blob([data],{type});
+ let done=false;
+ try{
+  const file=new File([blob],filename,{type});
+  if(navigator.canShare&&navigator.canShare({files:[file]})){await navigator.share({files:[file],title:filename});done=true}
+ }catch(e){if(e&&e.name==='AbortError')return}
+ if(!done){
+  try{const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=filename;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),8000);done=true}
+  catch(e){toast('Could not save the file');return}
+ }
+ toast('Saved '+filename);
+ if(/\.(csv|json)$/.test(filename)){lsSet('kn-bk',DAY());updateBk()}
+}
+function updateBk(){const e=$('#bk');if(!e)return;const d=lsGet('kn-bk');e.textContent=d?'Last backup: '+d:'No backup yet';e.className='hint'+(items.length&&d!==DAY()?' warn':'')}
+
+/* ---------- wire up ---------- */
+function applyLang(){
+ document.body.classList.toggle('lang-ne',lang==='ne');document.documentElement.lang=lang==='ne'?'ne':'en';
+ $('#h-int').textContent=u('interviews');$('#new').textContent=u('newInt');$('#csv').textContent=u('csv');
+ $('#search').placeholder=u('search');$('#starOnly').textContent=u('starOnly');$('#md').textContent=u('md');$('#save').textContent=u('save');
+ renderForm();renderList();
+}
+$('#new').addEventListener('click',newItem);
+$('#save').addEventListener('click',async()=>{if(readOnly)return;dirty=true;await save();if(cur.shop.trim())toast(u('savedToast'))});
+$('#search').addEventListener('input',renderList);
+$('#starOnly').addEventListener('click',()=>{starOnly=!starOnly;applyStar()});
+$('#md').addEventListener('click',()=>{if(!cur.shop.trim()){toast(u('needNameToast'));return}download(clean(cur.shop)+' - '+cur.date+'.md',toMd(cur))});
+$('#csv').addEventListener('click',()=>{if(!items.length){toast(u('nothingToast'));return}download('Kirana interviews - all shops - '+DAY()+'.csv',toCsv(items.slice().sort((a,b)=>(a.date||'').localeCompare(b.date||''))))});
+addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='s'){e.preventDefault();if(readOnly)return;dirty=true;save()}});
+addEventListener('pagehide',()=>{if(dirty)lsSet('kn-draft',JSON.stringify(cur))});
+$('#bak').addEventListener('click',async()=>{await flush();if(!items.length){toast('Nothing saved yet');return}download('Kirana interviews backup - '+DAY()+'.json',JSON.stringify({app:'kirana-interviews',v:1,items}))});
+$('#rst').addEventListener('click',()=>$('#rstf').click());
+$('#rstf').addEventListener('change',async e=>{const f=e.target.files[0];e.target.value='';if(!f)return;
+ try{const j=JSON.parse(await f.text());const arr=Array.isArray(j)?j:(j.items||[]);let n=0;
+  for(const c of arr){if(!c||!c.id)continue;const have=items.find(x=>x.id===c.id);if(!have||(c.updated||0)>(have.updated||0)){await store.put(c);n++}}
+  toast(n+' interview'+(n===1?'':'s')+' restored')}catch(err){toast('Could not read that backup file')}});
+try{if(navigator.storage&&navigator.storage.persist)navigator.storage.persist()}catch(e){}
+if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
+(async()=>{
+ const d=lsGet('kn-draft');if(d){try{const c=JSON.parse(d);if(c&&c.id&&(c.shop||answered(c)||c.general)){cur=Object.assign(blank(),c);dirty=!!cur.shop.trim()}}catch(e){}}
+ applyLang();
+ await initStore();
+ if(dirty){setStatus('Restored unsaved notes — saving…');save()}
+})();
+</script>
+</body></html>
